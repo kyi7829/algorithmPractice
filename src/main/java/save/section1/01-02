@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Main {
+    public String solution(String str) {
+        String result = "";
+
+        for (char c : str.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                result += Character.toLowerCase(c);
+            } else if (Character.isLowerCase(c)) {
+                result += Character.toUpperCase(c);
+            }
+        }
+        return result;
+    }
+
+    // 아스키코드 활용
+    public String solution2(String str) {
+        String result = "";
+
+        for (char c : str.toCharArray()) {
+            if (c > 90) {
+                result += (char)(c - 32);
+            } else if (c <= 90) {
+                result += (char)(c + 32);
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Main T = new Main();
+
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+
+        System.out.println(T.solution2(str));
+    }
+}

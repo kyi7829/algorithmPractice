@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public int solution(String str, char c) {
+        int cnt = 0;
+
+        // 대소문자 구분에 대한 언급이 없었으므로, 대문자로 치환
+        str = str.toUpperCase();
+        c = Character.toUpperCase(c);
+
+        for (int i = 0; i<str.length(); i++) {
+            if (str.charAt(i) == c) {
+                cnt ++;
+            }
+        }
+        return cnt;
+    }
+
+    public int solution2(String str, char c) {
+        int cnt = 0;
+
+        // 대소문자 구분에 대한 언급이 없었으므로, 대문자로 치환
+        str = str.toUpperCase();
+        c = Character.toUpperCase(c);
+
+        for (char x : str.toCharArray()) {
+            if (x == c) {
+                cnt ++;
+            }
+        }
+        return cnt;
+    }
+
+    public static void main(String[] args) {
+        Main T = new Main();
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        char c = sc.next().charAt(0);
+
+        System.out.println(T.solution2(str, c));
+    }
+}
