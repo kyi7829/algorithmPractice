@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+
+    // 2중 for문 사용
+    public void solution(int cnt, String arr[]) {
+        String result;
+        for (int i = 0; i < cnt; i++) {
+            result = "";
+            for (int j = arr[i].length()-1; j >= 0; j--){
+                result += arr[i].charAt(j);
+            }
+            System.out.println(result);
+        }
+    }
+
+    // StringBuilder 사용
+    public void solution2(int cnt, String arr[]) {
+
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < cnt; i++) {
+            // StringBuilder 문자열 추가
+            builder.append(arr[i]);
+
+            // 문자열 출력
+            System.out.println(builder.reverse().toString());
+
+            // StringBuilder 문자열 초기화
+            builder.setLength(0);
+        }
+    }
+
+    public static void main(String[] args) {
+        Main T = new Main();
+
+        Scanner sc = new Scanner(System.in);
+        int cnt = sc.nextInt();
+
+        String arr[] = new String[cnt];
+
+        for (int i = 0; i < cnt; i++) {
+            arr[i] = sc.next();
+        }
+        T.solution2(cnt, arr);
+    }
+}
