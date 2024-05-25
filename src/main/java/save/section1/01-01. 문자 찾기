@@ -1,0 +1,43 @@
+import java.util.Scanner;
+import java.util.stream.IntStream;
+
+public class Main {
+
+    /**
+     * 해당 글자수 구하기
+     * @param str
+     * @param c
+     * @return
+     */
+    public int solution(String str, char c) {
+        int answer = 0;
+
+        // 대소문자 구분 없애기 -> 전부 대문자로
+        str = str.toUpperCase();
+        c = Character.toUpperCase(c);
+
+        // 방법 1. 기본 for문
+//        for(int i=0; i<str.length(); i++){
+//            if(str.charAt(i) == c) answer++;
+//        }
+
+        // 방법 2. foreach문
+        for(char x : str.toCharArray()){
+            if (x == c) answer++;
+        }
+
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Main T = new Main();
+
+        Scanner sc = new Scanner(System.in);
+
+        // 입력
+        String str = sc.next();
+        char c = sc.next().charAt(0);
+
+        System.out.println(T.solution(str, c));
+    }
+}
