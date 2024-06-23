@@ -6,20 +6,24 @@ import java.util.stream.IntStream;
 public class Main {
 
     /**
-     * 암호
+     * 문자열 압축
      * @param str
      * @return
      */
-    public String solution(int n, String str) {
+    public String solution(String str) {
 
         String answer = "";
-
+        str = str + " ";
+        int cnt = 1;
         // 강의 방법
-        for (int i = 0; i<n; i++) {
-            String tmp = str.substring(0, 7).replace('#', '1').replace('*', '0');
-            int num = Integer.parseInt(tmp, 2);
-            answer += (char) num;
-            str = str.substring(7);
+        for (int i = 0; i<str.length()-1; i++) {
+            if(str.charAt(i) == str.charAt(i+1)){
+                cnt++;
+            }else{
+                answer += str.charAt(i);
+                if (cnt > 1) answer += String.valueOf(cnt);
+                cnt = 1;
+            }
         }
 
         return answer;
@@ -31,9 +35,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         // 입력
-        int n = sc.nextInt();
         String str = sc.next();
 
-        System.out.print(T.solution(n, str));
+        System.out.print(T.solution(str));
     }
 }

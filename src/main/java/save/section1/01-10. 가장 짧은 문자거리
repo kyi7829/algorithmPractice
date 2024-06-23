@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.stream.IntStream;
+
+public class Main {
+
+    /**
+     * 가장 짧은 문자거리
+     * @param str
+     * @return
+     */
+    public int[] solution(String str, char c) {
+        int p = 1000;
+
+        int[] answer = new int[str.length()];
+        // 강의 방법
+        for (int i = 0; i<str.length(); i++){
+            char x = str.charAt(i);
+            if (x == c){
+                p = 0;
+                answer[i] = p;
+            }else{
+                p++;
+                answer[i] = p;
+            }
+        }
+        p = 1000;
+        for (int i = str.length()-1; i >= 0; i--){
+            char x = str.charAt(i);
+            if (x == c){
+                p = 0;
+            }else{
+                p++;
+                answer[i] = Math.min(answer[i], p);
+            }
+        }
+
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Main T = new Main();
+
+        Scanner sc = new Scanner(System.in);
+
+        // 입력
+        String str = sc.next();
+        char c = sc.next().charAt(0);
+
+        for (int x : T.solution(str, c)){
+            System.out.print(x + " ");
+        }
+    }
+}
